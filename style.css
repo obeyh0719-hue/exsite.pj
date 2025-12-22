@@ -1,14 +1,79 @@
 @charset "utf-8";
 
-*{margin: 0; padding: 0;}
-li{list-style: none;}
-img,iframe{vertical-align: top;}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+img,
+iframe {
+    vertical-align: top;
+}
 
 /*문서전체 공통적으로 적용할 스타일*/
-:root{
+:root {
     font-family: "Pretendard Variable";
 }
 
-.inner{
-    max-width: 1600px; margin: 0 auto;
+.inner {
+    max-width: 1600px;
+    margin: 0 auto;
+
+    border-bottom: 1px solid #134290;
+}
+
+header .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo img {
+    width: 250px;
+}
+
+#gnb {
+    flex-grow: 1;
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-around;
+}
+
+#navbar a {
+    line-height: 90px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 20px;
+    color: #134290;
+    text-decoration: none;
+}
+
+.searchbox {
+    border: 1px solid #134290;
+    border-radius: 25px;
+    padding: 6px 20px;
+}
+
+.searchbox input {
+    width: 180px;
+    border: 0;
+    line-height: 2;
+}
+
+.searchbox input::placeholder {
+    font-size: 13px;
+    color: #D4D3D3;
+}
+
+.searchbox a {
+    display: inline-block;
+    text-decoration: none;
+    color: #134290;
+    vertical-align: -2px;
 }

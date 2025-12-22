@@ -8,7 +8,7 @@
 
     <!--파비콘 : 60*60 png 파일로 넣기 탭창에서 홈페이지 바로 옆에 있는 아이콘ㅇㅇ-->
     <link rel="shortcut icon" href="./image/파비콘1.png">
-
+    <link href="https://cdn.jsdelivr.net/xeicon/2/xeicon.min.css" rel="stylesheet">
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <link rel="stylesheet" href="style.css">
@@ -18,23 +18,125 @@
     <header>
         <div class="inner">
             <div id="logo">
-                <h1><a  href="#"><img src="../main_logo.png" alt="한국도로공사"></a></h1>
+                <h1><a href=""><img src="../main_logo.png" alt="한국도로공사"></a></h1>
             </div>
-            <nav>
-
+            <nav id="gnb">
+                <ul id="navbar">
+                    <li><a href="https://www.ex.co.kr/site/com/pageProcess.do">공사소개</a></li>
+                    <li><a href="https://www.ex.co.kr/site/com/pageProcess.do">고속도로서비스</a></li>
+                    <li><a href="">국민참여</a></li>
+                    <li><a href="">경영&middot;정보공개</a></li>
+                    <li><a href="">미래혁신</a></li>
+                </ul>
             </nav>
-            <div>
-
+            <div class="searchbox">
+                <input type="search" placeholder="궁금하신 내용을 입력해주세요.">
+                <a href=""><i class="xi-search"></i></a>
             </div>
         </div>
-    </header>
+    </header><!--header end-->
 
     <main>
-        <section id="main_veiw">
+        <section id="open_veiw">
             <div class="inner">
-
+                <h2 class="map_name">실시간 도로 상황</h2>
+                <!--여기 지도 표기-->
             </div>
-        </section>
+            <div>
+                <ul class="quick_menu">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <ul class="banner">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </section><!--상단 1 end-->
+        <section id="middle_veiw">
+            <div class="promotion">
+                <h2>도로공사 홍보영상</h2>
+                <video src=""></video>
+            </div>
+            <div class="notice">
+                <h2>공지사항/보도자료</h2>
+                <div class="notice_bg">
+                    <p>2025년 고속도로 공공 유휴 부지 활용<br>
+                        생활물류시설 개발사업 질의/회신 내용
+                    </p>
+                    <hr>
+                    <ul class="notice_word">
+                        <li>[채용공고] 2025년 충북본북 관내 지사(엄정,상주) 제설 기간제 근로자...</li>
+                        <li>[채용공고] 2025년 충북본부 관내 지사(진천) 제설 기간제근로자 관리원...</li>
+                        <li>(수정)제15기 기술자문위원회, 제2기 기술평가위원회, 제2기 설계VE위원...</li>
+                        <li>[입찰결과]계양-강화 고속도로 제7공구 일괄입찰공사 실시설계 적격심의...</li>
+                    </ul>
+                    <ul class="data">
+                        <li>2025.12.05</li>
+                        <li>2025.12.05</li>
+                        <li>2025.12.05</li>
+                        <li>2025.12.05</li>
+                    </ul>
+                </div>
+            </div>
+        </section><!--중앙 1 end-->
+        <section id="sns">
+            <h2>도로공사 소식</h2>
+            <ul class="instagam">
+                <il></il>
+                <il></il>
+                <il></il>
+            </ul>
+            <ul class="face_book">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <ul class="youtube">
+                <li></li>
+                <li></li>
+            </ul>
+            <ul class="blog">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </section><!--sns part end-->
+        <section id="social">
+            <h2>국민곁에, 한국도로공사</h2>
+            <ul>
+                <li></li>
+                <li>헌혈뱅크 운영</li>
+            </ul>
+            <ul>
+                <li></li>
+                <li>희귀난치병 치료 지원</li>
+            </ul>
+            <ul>
+                <li></li>
+                <li>고속도로장학재단 운영</li>
+            </ul>
+            <ul>
+                <li></li>
+                <li>고속도로 진로체험 교실</li>
+            </ul>
+        </section><!--사회공헌활동 end-->
+        <section id="organization">
+            <h3>관련기관</h3>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </section><!--관련기관 end-->
     </main>
 
     <footer>
