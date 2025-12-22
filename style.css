@@ -22,7 +22,8 @@ iframe {
 .inner {
     max-width: 1600px;
     margin: 0 auto;
-
+}
+header .inner{
     border-bottom: 1px solid #134290;
 }
 
@@ -76,4 +77,19 @@ header .inner {
     text-decoration: none;
     color: #134290;
     vertical-align: -2px;
+}
+.map_name{
+    width: 908px; height: 63.15px;
+    background: #134290;
+    color: #fff;
+    border-radius: 12px;
+    position: relative;
+    text-align: center;
+}
+
+
+
+
+main #open_veiw{
+    justify-content: space-between;
 }
