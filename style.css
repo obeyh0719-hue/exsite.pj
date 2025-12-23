@@ -24,7 +24,7 @@ iframe {
     padding: 0 20px;
     margin: 0 auto;
 }
-header .inner{
+header{
     border-bottom: 1px solid #134290;
 }
 
@@ -96,7 +96,7 @@ header .inner {
     margin-bottom: 10px;
 }
 
-main #open_veiw{
+main #open_view{
     display: flex;
     justify-content: space-between;
 
@@ -121,13 +121,48 @@ main #open_veiw{
 .quick_menu li:nth-child(4n){
     border-right: 0;
 }
+.quick_menu li:nth-child(1),
+.quick_menu li:nth-child(2),
+.quick_menu li:nth-child(3),
+.quick_menu li:nth-child(4){
+    padding-bottom: 30px;
+}
 .quick_menu li:nth-child(5),
 .quick_menu li:nth-child(6),
 .quick_menu li:nth-child(7),
 .quick_menu li:nth-child(8){
     border-top: 1px dashed #CEC9C9;
+    padding-top: 30px;
 }
+
 .quick_menu li img{
     width: 60px; height: 60px;
     object-fit: contain;
+}
+#menu{
+    display: block;
+}
+.banner{
+    margin-top: 67px;
+    width: 632px;
+}
+.banner img{
+    width: 100%;
+}
+.banner li{
+    opacity: 0.3;
+}
+.banner li.swiper-slide-active{
+    opacity: 1;
+}
+#middle_view{
+    justify-content: space-between;
+    margin-top: 100px;
+    display: flex;
+}
+.promotion video{
+    margin-top: 50px;
+    width: 770px;
+    height: 450px;
+    object-fit: cover;
 }

@@ -12,6 +12,9 @@
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 </head>
 
 <body>
@@ -37,85 +40,97 @@
     </header><!--header end-->
 
     <main>
-        <section id="open_veiw">
+        <section id="open_view">
             <div class="inner">
                 <div class="map">
                     <h2 class="map_name">실시간 도로 상황</h2>
                     <p><img src="./image/map.png" alt=""></p>
                 </div>
-                <div class="quick_menu">
-                    <ul>
-                        <li>
-                            <img src="./image/icon/1.png" alt="">
-                            <p>하이패스</p>
-                        </li>
-                        <li>
-                            <img src="./image/icon/2.png" alt="">
-                            <p>휴게소</p>
-                        </li>
-                        <li>
-                            <img src="./image/icon/3.png" alt="">
-                            <p>통행요금</p>
-                        </li>
-                        <li>
-                            <img src="./image/icon/4.png" alt="">
-                            <p>교통정보</p>
-                        </li>
-                        <li>
-                            <img src="./image/icon/5.png" alt="">
-                            <p>미납통행료</p>
-                        </li>
-                        <li>
-                            <img src="./image/icon/6.png" alt="">
-                            <p>교통안전</p>
-                        </li>
-                        <li>
-                            <img src="./image/icon/7.png" alt="">
-                            <p>안전신고</p>
-                        </li>
-                        <li>
-                            <img src="./image/icon/8.png" alt="">
-                            <p>공익신고</p>
-                        </li>
-
-                    </ul>
-                    <ul class="banner">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
+                <div id="menu">
+                    <div class="quick_menu">
+                        <ul>
+                            <li>
+                                <img src="./image/icon/1.png" alt="">
+                                <p>하이패스</p>
+                            </li>
+                            <li>
+                                <img src="./image/icon/2.png" alt="">
+                                <p>휴게소</p>
+                            </li>
+                            <li>
+                                <img src="./image/icon/3.png" alt="">
+                                <p>통행요금</p>
+                            </li>
+                            <li>
+                                <img src="./image/icon/4.png" alt="">
+                                <p>교통정보</p>
+                            </li>
+                            <li>
+                                <img src="./image/icon/5.png" alt="">
+                                <p>미납통행료</p>
+                            </li>
+                            <li>
+                                <img src="./image/icon/6.png" alt="">
+                                <p>교통안전</p>
+                            </li>
+                            <li>
+                                <img src="./image/icon/7.png" alt="">
+                                <p>안전신고</p>
+                            </li>
+                            <li>
+                                <img src="./image/icon/8.png" alt="">
+                                <p>공익신고</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="banner swiper">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide"><img src="./image/banner/banner_1.png" alt=""></li>
+                            <li class="swiper-slide"><img src="./image/banner/banner_2.png" alt=""></li>
+                            <li class="swiper-slide"><img src="./image/banner/banner_3.png" alt=""></li>
+                            <li class="swiper-slide"><img src="./image/banner/banner_4.png" alt=""></li>
+                            <li class="swiper-slide"><img src="./image/banner/banner_5.png" alt=""></li>
+                        </ul>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
                 </div>
-
             </div>
         </section><!--상단 1 end-->
-        <section id="middle_veiw">
-            <div class="promotion">
-                <h2>도로공사 홍보영상</h2>
-                <video src=""></video>
+
+
+        <div id="middle_view">
+            <div class="inner">
+                <section class="promotion">
+                    <h2>도로공사 홍보영상</h2>
+                    <video controls width="250" loop muted autoplay>
+                        <source src="./image/promotion_video.mp4">
+                    </video>
+                </section>
+                <section class="notice">
+                    <h2>공지사항/보도자료</h2>
+                    <div class="notice_bg">
+                        <p>2025년 고속도로 공공 유휴 부지 활용<br>
+                            생활물류시설 개발사업 질의/회신 내용
+                        </p>
+                        <hr>
+                        <ul class="notice_word">
+                            <li>[채용공고] 2025년 충북본북 관내 지사(엄정,상주) 제설 기간제 근로자...</li>
+                            <li>[채용공고] 2025년 충북본부 관내 지사(진천) 제설 기간제근로자 관리원...</li>
+                            <li>(수정)제15기 기술자문위원회, 제2기 기술평가위원회, 제2기 설계VE위원...</li>
+                            <li>[입찰결과]계양-강화 고속도로 제7공구 일괄입찰공사 실시설계 적격심의...</li>
+                        </ul>
+                        <ul class="data">
+                            <li>2025.12.05</li>
+                            <li>2025.12.05</li>
+                            <li>2025.12.05</li>
+                            <li>2025.12.05</li>
+                        </ul>
+                    </div>
+                </section>
             </div>
-            <div class="notice">
-                <h2>공지사항/보도자료</h2>
-                <div class="notice_bg">
-                    <p>2025년 고속도로 공공 유휴 부지 활용<br>
-                        생활물류시설 개발사업 질의/회신 내용
-                    </p>
-                    <hr>
-                    <ul class="notice_word">
-                        <li>[채용공고] 2025년 충북본북 관내 지사(엄정,상주) 제설 기간제 근로자...</li>
-                        <li>[채용공고] 2025년 충북본부 관내 지사(진천) 제설 기간제근로자 관리원...</li>
-                        <li>(수정)제15기 기술자문위원회, 제2기 기술평가위원회, 제2기 설계VE위원...</li>
-                        <li>[입찰결과]계양-강화 고속도로 제7공구 일괄입찰공사 실시설계 적격심의...</li>
-                    </ul>
-                    <ul class="data">
-                        <li>2025.12.05</li>
-                        <li>2025.12.05</li>
-                        <li>2025.12.05</li>
-                        <li>2025.12.05</li>
-                    </ul>
-                </div>
-            </div>
-        </section><!--중앙 1 end-->
+        </div><!--중앙 1 end-->
+
         <section id="sns">
             <h2>도로공사 소식</h2>
             <ul class="instagam">
@@ -172,7 +187,31 @@
 
         </div>
     </footer>
-
+    <script>
+        const swiper = new Swiper('.swiper', {
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 1.5,
+            loop: true,
+            spaceBetween: 30,
+            effect: "coverflow",
+            coverflowEffect: {
+                rotate: 0,
+                depth: 800,
+                slideShadows: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            autoplay: { delay: 3000 },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
 </body>
+
 
 </html>
