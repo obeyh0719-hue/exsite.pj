@@ -165,4 +165,40 @@ main #open_view{
     width: 770px;
     height: 450px;
     object-fit: cover;
+    border-radius: 12px;
 }
+.notice_bg{
+    background: url(./image/bg/ChatGPT\ Image\ 2025년\ 12월\ 19일\ 오후\ 02_26_31.png);
+    width: 770px; height: 450px;
+    margin-top: 50px;
+    border-radius: 12px;
+}
+.notice h2{
+    align-items: flex-start;
+}
+.notice_bg p{
+    padding: 40px 20px;
+    font-size: 36px;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+}
+.notice_bg hr{
+    color: #fff;
+}
+.notice_in{
+    display: flex;
+    padding: 54px 25px;
+}
+.notice_in ul{
+    color: #fff;
+    justify-content: space-between;
+}
+.notice_word{
+    flex-grow: 1;
+}
+.notice_in li{
+    font-size: 20px;
+    line-height: 37px;
+}
+
