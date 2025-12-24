@@ -82,8 +82,7 @@ header .inner {
     vertical-align: -2px;
 }
 
-.inner {
-    padding-top: 100px;
+#open_view .inner {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -102,6 +101,7 @@ header .inner {
 }
 
 main #open_view {
+    margin-top: 50px;
     display: flex;
     justify-content: space-between;
 
@@ -175,8 +175,14 @@ main #open_view {
 
 #middle_view {
     justify-content: space-between;
-    margin-top: 100px;
+    margin-top: 80px;
     display: flex;
+}
+
+#middle_view .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .promotion_title {
@@ -252,6 +258,10 @@ main #open_view {
     line-height: 37px;
 }
 
+#middle_view_2 {
+    margin-top: 80px;
+}
+
 .sns_title {
     color: #134290;
     width: 1600px;
@@ -268,30 +278,30 @@ main #open_view {
 .sns {
     display: flex;
     padding-inline: 0 48px;
-    /* 좌·우 여유 */
+    border-radius: 0 20px 20px 0;
 }
 
 .sns_object {
-    flex: 0 0 180px;
-    /* SNS 메뉴 고정폭 */
+
+    float: left;
 }
 
 .sns_btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* 세로 중앙 */
+    background: #fff;
+    border-radius: 0 60px 60px 0;
 }
 
 .picture {
-    flex: 1 1 auto;
-    /* 이미지 영역 가변 */
+    flex-grow: 1;
     min-width: 0;
     display: flex;
     justify-content: center;
-    /* 가로 중앙 */
     align-items: center;
-    /* 세로 중앙 */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 
@@ -306,16 +316,6 @@ main #open_view {
 
 .sns_object img {
     margin-right: 29px;
-
-}
-
-.picture {
-    margin-top: 40px;
-    margin-left: 59px;
-}
-
-.picture .sns_list {
-    display: none;
 }
 
 .picture .sns_list.is-active {
@@ -324,6 +324,17 @@ main #open_view {
 
 .sns_list {
     display: none;
+    gap: 20px;
+}
+
+.sns_list img {
+    border-radius: 20px;
+}
+
+.sns_list video {
+    width: 590px;
+    height: 300px;
+    border-radius: 20px;
 }
 
 .sns_list.is-active {
@@ -331,24 +342,91 @@ main #open_view {
 }
 
 .sns.is-insta .sns_btn[data-target="instagram"] {
-    background: linear-gradient(135deg,
-            #f58529,
-            #dd2a7b,
-            #8134af,
-            #515bd4);
+    background: none;
 }
 
 .sns.is-insta {
-    background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    background: linear-gradient(160deg, #f7e7db, #883BE0);
 }
 
-/* 왼쪽 메뉴는 흰색 유지(기존 스타일이 이미 있으면 생략 가능) */
-.sns_object {
-    background: #fff;
+.sns.is-face_book .sns_btn[data-target="face_book"] {
+    background: none;
 }
 
-/* 내부 요소가 배경 덮지 않게 */
+.sns.is-face_book {
+    background: #3b5998;
+}
+
+.sns.is-youtube .sns_btn[data-target="youtube"] {
+    background: none;
+}
+
+.sns.is-youtube {
+    background: #c4302b;
+}
+
+.sns.sns.is-blog .sns_btn[data-target="blog"] {
+    background: none;
+}
+
+.sns.is-blog {
+    background: #2db400;
+}
+
 .picture,
 .sns_list {
     background: transparent;
+}
+
+.social {
+    padding-top: 87px;
+    margin-top: 100px;
+    background: url(./image/bg/social_bg.png) center/cover fixed;
+    margin-bottom: 30px;
+
+}
+
+.social h2 {
+    color: #fff;
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.social_list {
+    margin-top: 47px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 25px;
+    color: #fff;
+}
+
+.social_list ul{
+    margin-bottom: 100px;
+}
+.social_list li{
+    margin-top: 47px;
+}
+#organization{
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 30;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+.f_site{
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+
+
+footer{
+    background: #F2F2F2;
 }
