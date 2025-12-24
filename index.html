@@ -148,36 +148,39 @@
         <div class="inner">
             <div class="sns">
                 <div class="sns_object">
-                    <p><img src="./image/icon/instagram.png" alt="">instagram</p>
-                    <p><img src="./image/icon/face_book.png" alt="">face book</p>
-                    <p><img src="./image/icon/youtube.png" alt="">youtube</p>
-                    <p><img src="./image/icon/blog.png" alt="">blog</p>
+                    <p class="sns_btn" data-target="instagram"><img src="./image/icon/instagram.png" alt="">instagram
+                    </p>
+                    <p class="sns_btn" data-target="face_book"><img src="./image/icon/face_book.png" alt="">face book
+                    </p>
+                    <p class="sns_btn" data-target="youtube"><img src="./image/icon/youtube.png" alt="">youtube</p>
+                    <p class="sns_btn" data-target="blog"><img src="./image/icon/blog.png" alt="">blog</p>
                 </div>
-
                 <div class="picture">
-                    <ul class="instagram">
+                    <ul class="sns_list" data-sns="instagram">
                         <li><img src="./image/sns/insta_1.png" alt=""></li>
                         <li><img src="./image/sns/insta_2.png" alt=""></li>
                         <li><img src="./image/sns/insta_3.png" alt=""></li>
                     </ul>
-                    <ul class="face_book">
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                    <ul class="sns_list" data-sns="face_book">
+                        <li><img src="./image/sns/facebook_1.png" alt=""></li>
+                        <li><img src="./image/sns/facebook_2.png" alt=""></li>
+                        <li><img src="./image/sns/facebook_3.png" alt=""></li>
                     </ul>
-                    <ul class="youtube">
-                        <li></li>
-                        <li></li>
+                    <ul class="sns_list" data-sns="youtube">
+                        <li><video controls width="250" loop muted autoplay>
+                                <source src="./image/youtube/youtube1.mp4">
+                            </video></li>
+                        <li><video controls width="250" loop muted autoplay>
+                                <source src="./image/youtube/youtube2.mp4">
+                            </video></li>
                     </ul>
-                    <ul class="blog">
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                    <ul class="sns_list" data-sns="blog">
+                        <li><img src="./image/blog/blog1.png" alt=""></li>
+                        <li><img src="./image/blog/blog2.png" alt=""></li>
+                        <li><img src="./image/blog/blog3.png" alt=""></li>
                     </ul>
                 </div>
-
             </div>
-        </div>
         </div><!--sns part end-->
         <section id="social">
             <h2>국민곁에, 한국도로공사</h2>
@@ -213,7 +216,7 @@
 
         </div>
     </footer>
-    <script>
+    <script>//배너 스와이프
         const swiper = new Swiper('.swiper', {
             grabCursor: true,
             centeredSlides: true,
@@ -237,6 +240,37 @@
             },
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const wrap = document.querySelector('.sns_object');
+            const picture = document.querySelector('.picture');
+            const sns = document.querySelector('.sns');         // ✅ 추가
+            const lists = document.querySelectorAll('.sns_list');
+
+            if (!wrap || !picture || !sns || lists.length === 0) return; // ✅ 수정
+
+            function setActive(target) {
+                lists.forEach(list => {
+                    list.classList.toggle('is-active', list.dataset.sns === target);
+                });
+
+                sns.classList.toggle('is-insta', target === 'instagram');  // ✅ 수정
+            }
+
+            setActive('instagram');
+
+            wrap.addEventListener('click', (e) => {
+                const btn = e.target.closest('.sns_btn');
+                if (!btn) return;
+
+                const target = (btn.dataset.target || '').trim();
+                if (!target) return;
+
+                setActive(target);
+            });
+        });
+    </script>
+
 </body>
 
 

@@ -180,7 +180,7 @@ main #open_view {
 }
 
 .promotion_title {
-    color:#134290;
+    color: #134290;
     display: flex;
     justify-content: space-between;
 }
@@ -207,7 +207,7 @@ main #open_view {
 }
 
 .notice_title {
-    color:#134290;
+    color: #134290;
     display: flex;
     justify-content: space-between;
 }
@@ -253,7 +253,7 @@ main #open_view {
 }
 
 .sns_title {
-    color:#134290;
+    color: #134290;
     width: 1600px;
     display: flex;
     margin-bottom: 50px;
@@ -267,25 +267,88 @@ main #open_view {
 
 .sns {
     display: flex;
+    padding-inline: 0 48px;
+    /* 좌·우 여유 */
 }
-.sns_object p{
+
+.sns_object {
+    flex: 0 0 180px;
+    /* SNS 메뉴 고정폭 */
+}
+
+.sns_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 세로 중앙 */
+}
+
+.picture {
+    flex: 1 1 auto;
+    /* 이미지 영역 가변 */
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    /* 가로 중앙 */
+    align-items: center;
+    /* 세로 중앙 */
+}
+
+
+.sns_object p {
     font-weight: bold;
     font-size: 25px;
     line-height: 55px;
     text-align: center;
-    width: 300px; height: 110px;
+    width: 300px;
+    height: 110px;
 }
-.sns_object img{
-    align-items: center;
+
+.sns_object img {
     margin-right: 29px;
-    
+
 }
-.picture{
+
+.picture {
     margin-top: 40px;
     margin-left: 59px;
 }
 
-.picture ul{
+.picture .sns_list {
+    display: none;
+}
+
+.picture .sns_list.is-active {
     display: flex;
-    justify-content: center;
+}
+
+.sns_list {
+    display: none;
+}
+
+.sns_list.is-active {
+    display: flex;
+}
+
+.sns.is-insta .sns_btn[data-target="instagram"] {
+    background: linear-gradient(135deg,
+            #f58529,
+            #dd2a7b,
+            #8134af,
+            #515bd4);
+}
+
+.sns.is-insta {
+    background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4);
+}
+
+/* 왼쪽 메뉴는 흰색 유지(기존 스타일이 이미 있으면 생략 가능) */
+.sns_object {
+    background: #fff;
+}
+
+/* 내부 요소가 배경 덮지 않게 */
+.picture,
+.sns_list {
+    background: transparent;
 }
