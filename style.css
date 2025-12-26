@@ -277,7 +277,6 @@ main #open_view {
 
 .sns {
     display: flex;
-    padding-inline: 0 48px;
     border-radius: 0 20px 20px 0;
 }
 
