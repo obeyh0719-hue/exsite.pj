@@ -403,13 +403,15 @@ main #open_view {
     color: #fff;
 }
 
-.social_list ul{
+.social_list ul {
     margin-bottom: 100px;
 }
-.social_list li{
+
+.social_list li {
     margin-top: 47px;
 }
-#organization{
+
+#organization {
     margin-top: 100px;
     display: flex;
     align-items: center;
@@ -418,15 +420,69 @@ main #open_view {
     font-weight: bold;
     box-sizing: border-box;
 }
-.f_site{
+
+footer {
+    margin-top: 80px;
+    background: #F2F2F2;
+
+}
+
+footer .inner {
+    position: relative;
+}
+
+.f_site {
+    position: absolute;
+    right: 0;
+    top: -40px;
+    color: #000;
     display: flex;
-    justify-content: flex-end;
+    gap: 10px;
+}
+
+.f_site p {
+    align-items: center center;
+    border-radius: 12px 12px 0 0;
+    padding:10px 20px;
+    background: #F2F2F2;
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
+}
+.f_site span{
+    display:inline-block ;
+    vertical-align: -2px;
+}
+
+.f_law {
+    display: flex;
 }
 
 
+.f_law p {
+    margin-top: 70px;
+}
 
+.law_inner {
+    margin-top: 60px;
+    margin-left: 55px;
+}
 
+.law_inner ul {
+    font-size: 20px;
+    font-weight: bolder;
+    display: flex;
+    gap: 40px;
+}
 
-footer{
-    background: #F2F2F2;
+.law_inner address {
+    margin-top: 30px;
+}
+
+.call {
+    margin-left: -278px;
+    margin-top: -90px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
