@@ -173,6 +173,30 @@ main #open_view {
     opacity: 1;
 }
 
+.call_btn {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.call_btn img {
+    width: 40px;
+    height: 39px;
+    background: #fff;
+    box-shadow: #000;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    display: block;
+    padding: 10px;
+    /* 이미지가 잘리지 않고 비율을 유지하며 안으로 쏙 들어감 */
+}
+
+
 #middle_view {
     justify-content: space-between;
     margin-top: 80px;
@@ -410,6 +434,18 @@ main #open_view {
     margin-top: 47px;
 }
 
+.social_list ul li img {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s ease-in-out;
+    /* 확대/축소 속도와 부드러움 조절 */
+}
+
+.social_list ul li:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.9);
+}
+
 #organization {
     margin-top: 100px;
     display: flex;
@@ -442,14 +478,15 @@ footer .inner {
 .f_site p {
     align-items: center center;
     border-radius: 12px 12px 0 0;
-    padding:10px 20px;
+    padding: 10px 20px;
     background: #F2F2F2;
     color: #000;
     font-size: 18px;
     font-weight: 500;
 }
-.f_site span{
-    display:inline-block ;
+
+.f_site span {
+    display: inline-block;
     vertical-align: -2px;
 }
 
