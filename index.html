@@ -36,8 +36,8 @@
             </div>
             <nav id="gnb">
                 <ul id="navbar">
-                    <li><a href="https://www.ex.co.kr/site/com/pageProcess.do">공사소개</a></li>
-                    <li><a href="https://www.ex.co.kr/site/com/pageProcess.do">고속도로서비스</a></li>
+                    <li><a href="">공사소개</a></li>
+                    <li><a href="">고속도로서비스</a></li>
                     <li><a href="">국민참여</a></li>
                     <li><a href="">경영&middot;정보공개</a></li>
                     <li><a href="">미래혁신</a></li>
@@ -58,11 +58,16 @@
                     <div style="position: relative;">
                         <div id="map"></div>
                         <div class="map_controls">
-                            <button id="btn-cctv" onclick="getCCTVData()"><img src="./image/icon/CCTV.png"
-                                    alt="">CCTV</button>
-                            <button id="btn-rest"> <img src="./image/icon/map_lest.png" alt="">휴게소</button>
-                            <button id="btn-weather"> <img src="./image/icon/wheather.png" alt="">날씨</button>
-                            <button id="btn-sleep"> <img src="./image/icon/sleep.png" alt="">졸음쉼터</button>
+                            <a href="https://www.roadplus.co.kr/main/main.do?selectMenuId=010101" target="_blank"
+                                style="text-decoration: none;">
+                                <button id="btn-cctv" style="cursor: pointer;"><img src="./image/icon/CCTV.png"
+                                        alt="CCTV 아이콘">CCTV</button></a>
+                            <button id="btn-rest" onclick="getRestAreaData()"> <img src="./image/icon/map_lest.png"
+                                    alt="">휴게소</button>
+                            <button id="btn-weather" onclick="getWeatherData()"> <img src="./image/icon/wheather.png"
+                                    alt="">날씨</button>
+                            <button id="btn-sleep"> <img src="./image/icon/sleep.png" onclick="getSleepData()"
+                                    alt="">졸음쉼터</button>
                             <div class="map_legend">
                                 <div class="legend_item"><span class="dot red"></span>정체</div>
                                 <div class="legend_item"><span class="dot yellow"></span>서행</div>
@@ -75,36 +80,38 @@
                     <div class="quick_menu">
                         <ul>
                             <li>
-                                <img src="./image/icon/1.png" alt="">
-                                <p>하이패스</p>
+                                <a href="https://www.hipass.co.kr/main.do" target="_blank"><img src="./image/icon/1.png"
+                                        alt="">
+                                    <p>하이패스</p>
+                                </a>
                             </li>
                             <li>
-                                <img src="./image/icon/2.png" alt="">
-                                <p>휴게소</p>
+                                <a href="https://www.roadplus.co.kr/main/main.do"><img src="./image/icon/2.png" alt="">
+                                <p>휴게소</p></a>
                             </li>
                             <li>
-                                <img src="./image/icon/3.png" alt="">
-                                <p>통행요금</p>
+                                <a href="https://www.hipass.co.kr/board/TollPaySearchList.do"><img src="./image/icon/3.png" alt="">
+                                <p>통행요금</p></a>
                             </li>
                             <li>
-                                <img src="./image/icon/4.png" alt="">
-                                <p>교통정보</p>
+                                <a href="https://www.roadplus.co.kr/main/main.do"><img src="./image/icon/4.png" alt="">
+                                <p>교통정보</p></a>
                             </li>
                             <li>
-                                <img src="./image/icon/5.png" alt="">
-                                <p>미납통행료</p>
+                                <a href="https://www.hipass.co.kr/comm/lginpg.do#"><img src="./image/icon/5.png" alt="">
+                                <p>미납통행료</p></a>
                             </li>
                             <li>
-                                <img src="./image/icon/6.png" alt="">
-                                <p>교통안전</p>
+                                <a href="https://www.roadplus.co.kr/main/main.do"><img src="./image/icon/6.png" alt="">
+                                <p>교통안전</p></a>
                             </li>
                             <li>
-                                <img src="./image/icon/7.png" alt="">
-                                <p>안전신고</p>
+                                <a href="https://www.safetyreport.go.kr/#main"><img src="./image/icon/7.png" alt="">
+                                <p>안전신고</p></a>
                             </li>
                             <li>
-                                <img src="./image/icon/8.png" alt="">
-                                <p>공익신고</p>
+                                <a href="https://www.mois.go.kr/frt/sub/a03/publicStatement/screen.do"><img src="./image/icon/8.png" alt="">
+                                <p>공익신고</p></a>
                             </li>
                         </ul>
                     </div>
@@ -292,41 +299,55 @@
 
         map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
 
-        var cctvMarkers = [];
+        //휴게소 시작
+        var restAreaMarkers = [];
 
-        function getCCTVData() {
-            // 1. 마커 토글 기능 (이미 있으면 제거)
-            if (cctvMarkers.length > 0) {
-                cctvMarkers.forEach(marker => marker.setMap(null));
-                cctvMarkers = [];
+        function getRestAreaData() {
+            if (restAreaMarkers.length > 0) {
+                restAreaMarkers.forEach(marker => marker.setMap(null));
+                restAreaMarkers = [];
                 return;
             }
 
-            // 2. CCTV 데이터 (UTIC 스트리밍 아이디 기반)
-            // 깃허브(HTTPS) 환경에서 차단을 최소화하는 주소 체계입니다.
-            const cctvList = [
-                { name: "강남역 사거리", lat: 37.4979, lon: 127.0276, id: "L010001" },
-                { name: "양재나들목", lat: 37.4725, lon: 127.0384, id: "L010164" },
-                { name: "한남대교 남단", lat: 37.5255, lon: 127.0173, id: "L010145" },
-                { name: "반포대교", lat: 37.5186, lon: 126.9961, id: "L010146" },
-                { name: "성수대교 북단", lat: 37.5452, lon: 127.0371, id: "L010141" }
+            const restAreaData = [
+                // 경부선
+                { name: "죽전휴게소(서울)", lat: 37.3323, lon: 127.1047, info: "경부선 / 갈비탕 맛집" },
+                { name: "기흥휴게소(부산)", lat: 37.2245, lon: 127.1051, info: "경부선 / 쇼핑몰 입점" },
+                { name: "안성휴게소(부산)", lat: 37.0117, lon: 127.1466, info: "경부선 / 소떡소떡 원조" },
+                { name: "망향휴게소(부산)", lat: 36.8550, lon: 127.1808, info: "경부선 / 야외 정원" },
+                { name: "금강휴게소(양방향)", lat: 36.2766, lon: 127.6708, info: "경부선 / 경치 최고" },
+                { name: "칠곡휴게소(부산)", lat: 36.0275, lon: 128.4489, info: "경부선 / 자율배식 식당" },
+                // 서해안선
+                { name: "행담도휴게소(양방향)", lat: 36.9422, lon: 126.7905, info: "서해안선 / 바다 위 휴게소" },
+                { name: "화성휴게소(목포)", lat: 37.1339, lon: 126.8617, info: "서해안선 / 순두부찌개 유명" },
+                { name: "군산휴게소(서울)", lat: 36.0355, lon: 126.7554, info: "서해안선 / 조용한 휴식" },
+                // 영동선 & 서울양양선
+                { name: "덕평자연휴게소(양방향)", lat: 37.2081, lon: 127.3828, info: "영동선 / 애견 테마파크" },
+                { name: "여주휴게소(강릉)", lat: 37.2341, lon: 127.6083, info: "영동선 / 도자기 전시" },
+                { name: "가평휴게소(춘천)", lat: 37.7853, lon: 127.4247, info: "서울양양선 / 잣호두과자" },
+                { name: "내린천휴게소(양양)", lat: 37.9158, lon: 128.2439, info: "서울양양선 / 건물 디자인상" },
+                // 중부선 & 기타
+                { name: "마장프리미엄휴게소", lat: 37.2514, lon: 127.3204, info: "중부선 / 대형 복합 쇼핑몰" },
+                { name: "시흥하늘휴게소(양방향)", lat: 37.3792, lon: 126.9075, info: "수도권외곽 / 도로 위 휴게소" },
+                { name: "함안휴게소(부산)", lat: 35.2755, lon: 128.3975, info: "남해선 / 수박 테마" }
             ];
-
-            cctvList.forEach(item => {
+            restAreaData.forEach(item => {
                 const position = new kakao.maps.LatLng(item.lat, item.lon);
-                const marker = new kakao.maps.Marker({ position: position, map: map });
 
-                // UTIC 영상 페이지 주소 구성
-                const videoUrl = `https://www.utic.go.kr/view/map/cctvStream.jsp?cctvid=${item.id}`;
+                const marker = new kakao.maps.Marker({
+                    position: position,
+                    map: map
+                });
 
                 const content = `
-            <div style="padding:10px; font-size:12px; line-height:1.6; width:160px; background:#fff; border-radius:5px;">
-                <div style="font-weight:bold; margin-bottom:5px; color:#333;">${item.name}</div>
-                <button onclick="window.open('${videoUrl}', 'cctvPop', 'width=480, height=380, resizable=yes, scrollbars=no')" 
-                        style="width:100%; cursor:pointer; background:#E74C3C; color:#fff; border:none; border-radius:3px; padding:7px 0; font-weight:bold;">
-                    📹 실시간 영상 재생
+                <div style="padding:10px; font-size:12px; width:180px;">
+                <div style="font-weight:bold; color:#004ea2; margin-bottom:5px;">🏠 ${item.name}</div>
+                <div style="color:#666; font-size:11px; margin-bottom:8px;">${item.info}</div>
+                <button onclick="zoomTo(${item.lat}, ${item.lon})" 
+                        style="width:100%; cursor:pointer; background:#f4f4f4; border:1px solid #ccc; border-radius:3px; padding:4px; font-size:11px;">
+                    위치 상세보기
                 </button>
-            </div>`;
+                </div>`;
 
                 const infowindow = new kakao.maps.InfoWindow({
                     content: content,
@@ -337,13 +358,125 @@
                     infowindow.open(map, marker);
                 });
 
-                cctvMarkers.push(marker);
+                restAreaMarkers.push(marker);
+            });
+            map.setCenter(new kakao.maps.LatLng(36.5, 127.5));
+            map.setLevel(11);
+        }
+
+        function zoomTo(lat, lon) {
+            const pos = new kakao.maps.LatLng(lat, lon);
+            map.setCenter(pos);
+            map.setLevel(3); // 건물이 보일 정도로 확대
+        }
+        //휴게소 끝
+
+
+        //날씨 시작
+
+        var weatherMarkers = [];
+
+        function getWeatherData() {
+            if (weatherMarkers.length > 0) {
+                weatherMarkers.forEach(m => m.setMap(null));
+                weatherMarkers = [];
+                return;
+            }
+            const cityWeather = [
+                { name: "서울", lat: 37.5665, lon: 126.9780, temp: "3", desc: "맑음", icon: "01d" },
+                { name: "춘천", lat: 37.8859, lon: 127.7298, temp: "1", desc: "구름조금", icon: "02d" },
+                { name: "대전", lat: 36.3504, lon: 127.3845, temp: "5", desc: "맑음", icon: "01d" },
+                { name: "대구", lat: 35.8714, lon: 128.6014, temp: "7", desc: "구름많음", icon: "03d" },
+                { name: "광주", lat: 35.1595, lon: 126.8526, temp: "6", desc: "흐림", icon: "04d" },
+                { name: "부산", lat: 35.1796, lon: 129.0756, temp: "9", desc: "맑음", icon: "01d" },
+                { name: "제주", lat: 33.4996, lon: 126.5312, temp: "12", desc: "비", icon: "10d" }
+            ];
+
+            cityWeather.forEach(city => {
+                const position = new kakao.maps.LatLng(city.lat, city.lon);
+
+                const content = `
+            <div style="background:#fff; border:1px solid #ccc; border-radius:20px; padding:5px 10px; display:flex; align-items:center; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
+                <img src="http://openweathermap.org/img/wn/${city.icon}.png" style="width:30px; height:30px;">
+                <span style="font-size:12px; font-weight:bold; margin-left:5px;">${city.name} ${city.temp}°C</span>
+            </div>`;
+
+                const customOverlay = new kakao.maps.CustomOverlay({
+                    position: position,
+                    content: content,
+                    yAnchor: 1
+                });
+
+                customOverlay.setMap(map);
+                weatherMarkers.push(customOverlay);
             });
 
-            // 3. 지도 중심 이동 및 확대 레벨 조정
-            map.setCenter(new kakao.maps.LatLng(37.4979, 127.0276));
-            map.setLevel(7);
+            map.setCenter(new kakao.maps.LatLng(36.2, 127.5));
+            map.setLevel(12);
         }
+        //날씨 끝
+
+
+        //졸음쉼터 시작
+        var sleepMarkers = [];
+
+        function getSleepData() {
+            if (sleepMarkers.length > 0) {
+                sleepMarkers.forEach(marker => marker.setMap(null));
+                sleepMarkers = [];
+                return;
+            }
+
+            const sleepData = [
+                { name: "판교 졸음쉼터", lat: 37.3822, lon: 127.1001, facility: "화장실 있음", road: "경부선" },
+                { name: "용인 졸음쉼터", lat: 37.2405, lon: 127.1955, facility: "화장실 있음", road: "영동선" },
+                { name: "안성 졸음쉼터", lat: 37.0345, lon: 127.1566, facility: "운동기구 있음", road: "경부선" },
+                { name: "비봉 졸음쉼터", lat: 37.2412, lon: 126.8501, facility: "화장실 있음", road: "서해안선" },
+                { name: "시흥 졸음쉼터", lat: 37.3855, lon: 126.8844, facility: "푸드트럭(간헐적)", road: "수도권제1순환" },
+                { name: "옥산 졸음쉼터", lat: 36.6455, lon: 127.3511, facility: "화장실 있음", road: "경부선" },
+                { name: "금강 졸음쉼터", lat: 36.2655, lon: 127.6811, facility: "화장실 있음", road: "경부선" }
+            ];
+
+            var imageSrc = './image/icon/sleep.png';
+            var imageSize = new kakao.maps.Size(24, 24); // 휴게소(30~35)보다 조금 작게 설정
+            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+            sleepData.forEach(item => {
+                const position = new kakao.maps.LatLng(item.lat, item.lon);
+
+                const marker = new kakao.maps.Marker({
+                    position: position,
+                    map: map,
+                    image: markerImage
+                });
+
+                const content = `
+            <div style="padding:10px; font-size:12px; width:170px;">
+                <div style="font-weight:bold; color:#2e7d32; margin-bottom:5px;">💤 ${item.name}</div>
+                <div style="font-size:11px; color:#666;">📍 노선: ${item.road}</div>
+                <div style="font-size:11px; color:#666;">✨ 시설: ${item.facility}</div>
+                <hr style="border:0.5px solid #eee; margin:5px 0;">
+                <p style="font-size:10px; color:#d32f2f; margin:0;">※ 15분 휴식으로 졸음운전 예방!</p>
+            </div>`;
+
+                const infowindow = new kakao.maps.InfoWindow({
+                    content: content,
+                    removable: true
+                });
+
+                kakao.maps.event.addListener(marker, 'click', function () {
+                    infowindow.open(map, marker);
+                    map.panTo(position);
+                });
+
+                sleepMarkers.push(marker);
+            });
+
+            map.setLevel(10);
+        }
+        //졸음쉼터 끝
+
+
     </script>
     <script>//배너 스와이프
         const swiper = new Swiper('.swiper', {
