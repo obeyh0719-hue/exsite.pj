@@ -100,6 +100,87 @@ header .inner {
     margin-bottom: 10px;
 }
 
+#map {
+    width: 908px;
+    height: 688px;
+    border-radius: 12px;
+}
+
+.map_controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.map_controls button {
+    display: block;
+    align-items: center;
+    padding: 10px 10px;
+    background-color: white;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.map_controls button img {
+    display: block;
+    width: 50px;
+    height: auto;
+}
+
+/* 버튼 클릭(활성화) 시 효과 - 나중에 자바스크립트로 제어 */
+.map_controls button.active {
+    background-color: #333;
+    color: white;
+}
+
+
+
+
+.map_legend {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.legend_item {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+    gap: 10px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.red {
+    background-color: #ff0000;
+}
+
+.yellow {
+    background-color: #ffd200;
+}
+
+.green {
+    background-color: #00ff00;
+}
+
+
+
 main #open_view {
     margin-top: 50px;
     display: flex;
@@ -180,22 +261,27 @@ main #open_view {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    z-index: 9999;
+}
+
+.call_btn a {
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .call_btn img {
     width: 40px;
-    height: 39px;
-    background: #fff;
-    box-shadow: #000;
-    border-radius: 50%;
-    justify-content: center;
-    align-items: center;
+    height: auto;
     object-fit: contain;
-    display: block;
-    padding: 10px;
-    /* 이미지가 잘리지 않고 비율을 유지하며 안으로 쏙 들어감 */
 }
-
 
 #middle_view {
     justify-content: space-between;

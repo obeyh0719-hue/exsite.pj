@@ -55,7 +55,21 @@
             <div class="inner">
                 <div class="map">
                     <h2 class="map_name">실시간 도로 상황</h2>
-                    <p><img src="./image/map.png" alt=""></p>
+                    <div style="position: relative;">
+                        <div id="map"></div>
+                        <div class="map_controls">
+                            <button id="btn-cctv" onclick="getCCTVData()"><img src="./image/icon/CCTV.png"
+                                    alt="">CCTV</button>
+                            <button id="btn-rest"> <img src="./image/icon/map_lest.png" alt="">휴게소</button>
+                            <button id="btn-weather"> <img src="./image/icon/wheather.png" alt="">날씨</button>
+                            <button id="btn-sleep"> <img src="./image/icon/sleep.png" alt="">졸음쉼터</button>
+                            <div class="map_legend">
+                                <div class="legend_item"><span class="dot red"></span>정체</div>
+                                <div class="legend_item"><span class="dot yellow"></span>서행</div>
+                                <div class="legend_item"><span class="dot green"></span>원활</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="menu">
                     <div class="quick_menu">
@@ -109,8 +123,8 @@
             </div>
         </section><!--상단 1 end-->
         <div class="call_btn">
-            <img src="./image/icon/cs.png" alt="">
-            <img src="./image/icon/kakao.png" alt="">
+            <a href=""><img src="./image/icon/cs.png" alt=""></a>
+            <a href=""><img src="./image/icon/kakao.png" alt=""></a>
         </div>
 
         <div id="middle_view">
@@ -263,6 +277,74 @@
             </div>
         </div>
     </footer>
+    <!--지도화면 시작점-->
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ab6616667f3449e628df5621069bc5e9"></script>
+
+    <script>
+        var mapContainer = document.getElementById('map'); // 지도를 표시할 div
+        var mapOption = {
+            center: new kakao.maps.LatLng(36.5, 127.5),
+            level: 12// 고속도로 교통상황을 보기 좋은 확대 레벨
+        };
+
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+
+        map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+
+        var cctvMarkers = [];
+
+        function getCCTVData() {
+            // 1. 마커 토글 기능 (이미 있으면 제거)
+            if (cctvMarkers.length > 0) {
+                cctvMarkers.forEach(marker => marker.setMap(null));
+                cctvMarkers = [];
+                return;
+            }
+
+            // 2. CCTV 데이터 (UTIC 스트리밍 아이디 기반)
+            // 깃허브(HTTPS) 환경에서 차단을 최소화하는 주소 체계입니다.
+            const cctvList = [
+                { name: "강남역 사거리", lat: 37.4979, lon: 127.0276, id: "L010001" },
+                { name: "양재나들목", lat: 37.4725, lon: 127.0384, id: "L010164" },
+                { name: "한남대교 남단", lat: 37.5255, lon: 127.0173, id: "L010145" },
+                { name: "반포대교", lat: 37.5186, lon: 126.9961, id: "L010146" },
+                { name: "성수대교 북단", lat: 37.5452, lon: 127.0371, id: "L010141" }
+            ];
+
+            cctvList.forEach(item => {
+                const position = new kakao.maps.LatLng(item.lat, item.lon);
+                const marker = new kakao.maps.Marker({ position: position, map: map });
+
+                // UTIC 영상 페이지 주소 구성
+                const videoUrl = `https://www.utic.go.kr/view/map/cctvStream.jsp?cctvid=${item.id}`;
+
+                const content = `
+            <div style="padding:10px; font-size:12px; line-height:1.6; width:160px; background:#fff; border-radius:5px;">
+                <div style="font-weight:bold; margin-bottom:5px; color:#333;">${item.name}</div>
+                <button onclick="window.open('${videoUrl}', 'cctvPop', 'width=480, height=380, resizable=yes, scrollbars=no')" 
+                        style="width:100%; cursor:pointer; background:#E74C3C; color:#fff; border:none; border-radius:3px; padding:7px 0; font-weight:bold;">
+                    📹 실시간 영상 재생
+                </button>
+            </div>`;
+
+                const infowindow = new kakao.maps.InfoWindow({
+                    content: content,
+                    removable: true
+                });
+
+                kakao.maps.event.addListener(marker, 'click', function () {
+                    infowindow.open(map, marker);
+                });
+
+                cctvMarkers.push(marker);
+            });
+
+            // 3. 지도 중심 이동 및 확대 레벨 조정
+            map.setCenter(new kakao.maps.LatLng(37.4979, 127.0276));
+            map.setLevel(7);
+        }
+    </script>
     <script>//배너 스와이프
         const swiper = new Swiper('.swiper', {
             grabCursor: true,
