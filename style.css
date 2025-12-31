@@ -198,11 +198,23 @@ main #open_view {
     width: 25%;
     border-right: 1px dashed #CEC9C9;
 }
-.quick_menu a{
+
+.quick_menu a {
     color: #000;
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+
 }
-.quick_menu p{
+
+.quick_menu a:hover {
+    transform: scale(1.2);
+}
+
+.quick_menu p {
     margin-top: 10px;
 }
 
@@ -224,6 +236,7 @@ main #open_view {
     border-top: 1px dashed #CEC9C9;
     padding-top: 30px;
 }
+
 
 .quick_menu li img {
     width: 60px;
@@ -274,7 +287,43 @@ main #open_view {
     align-items: center;
     overflow: hidden;
     cursor: pointer;
+    transition: 0.3s ease;
+    position: relative;
 }
+
+.call_btn a:first-child {
+    position: absolute;
+    bottom: 75px;
+    right: 0;
+    z-index: 10;
+    text-decoration: none;
+}
+
+.call_btn a:first-child span {
+    opacity: 0;
+    display: none;
+}
+
+.call_btn a:first-child:hover {
+    width: 300px;
+    border-radius: 12px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #134290;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.call_btn a:first-child:hover span {
+    opacity: 1;
+    display: flex;
+}
+
+.call_btn a:last-child {
+    position: relative;
+    z-index: 5;
+}
+
 
 .call_btn img {
     width: 40px;
@@ -305,6 +354,14 @@ main #open_view {
     height: 24px;
 }
 
+.promotion_title p img {
+    transition: transform 0.4s ease;
+}
+
+.promotion_title p img:hover {
+    transform: rotate(180deg);
+}
+
 .promotion video {
     margin-top: 50px;
     width: 770px;
@@ -332,6 +389,14 @@ main #open_view {
     height: 24px;
 }
 
+.notice_title p img {
+    transition: transform 0.4s ease;
+}
+
+.notice_title p img:hover {
+    transform: rotate(180deg);
+}
+
 .notice h2 {
     align-items: flex-start;
 }
@@ -341,30 +406,87 @@ main #open_view {
     font-size: 36px;
     text-align: center;
     font-weight: bold;
+}
+
+.notice_bg p a {
     color: #fff;
+    text-decoration: none;
+}
+
+.notice_bg p a:hover {
+    text-decoration: underline;
 }
 
 .notice_bg hr {
+
     color: #fff;
 }
 
 .notice_in {
+    margin-top: -10px;
     display: flex;
     padding: 54px 25px;
-}
-
-.notice_in ul {
-    color: #fff;
-    justify-content: space-between;
 }
 
 .notice_word {
     flex-grow: 1;
 }
 
+.notice_word a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/*노가다의 산물 건드리지마세요*/
+.notice_in:has(.notice_word li:nth-child(1):hover) .notice_word li:nth-child(1) a,
+.notice_in:has(.notice_word li:nth-child(1):hover) .data li:nth-child(1) a {
+    text-decoration: underline;
+}
+
+.notice_in:has(.data li:nth-child(1):hover) .notice_word li:nth-child(1) a,
+.notice_in:has(.data li:nth-child(1):hover) .data li:nth-child(1) a {
+    text-decoration: underline;
+}
+
+.notice_in:has(.notice_word li:nth-child(2):hover) .notice_word li:nth-child(2) a,
+.notice_in:has(.notice_word li:nth-child(2):hover) .data li:nth-child(2) a {
+    text-decoration: underline;
+}
+
+.notice_in:has(.data li:nth-child(2):hover) .notice_word li:nth-child(2) a,
+.notice_in:has(.data li:nth-child(2):hover) .data li:nth-child(2) a {
+    text-decoration: underline;
+}
+
+.notice_in:has(.notice_word li:nth-child(3):hover) .notice_word li:nth-child(3) a,
+.notice_in:has(.notice_word li:nth-child(3):hover) .data li:nth-child(3) a {
+    text-decoration: underline;
+}
+
+.notice_in:has(.data li:nth-child(3):hover) .notice_word li:nth-child(3) a,
+.notice_in:has(.data li:nth-child(3):hover) .data li:nth-child(3) a {
+    text-decoration: underline;
+}
+
+.notice_in:has(.notice_word li:nth-child(4):hover) .notice_word li:nth-child(4) a,
+.notice_in:has(.notice_word li:nth-child(4):hover) .data li:nth-child(4) a {
+    text-decoration: underline;
+}
+
+.notice_in:has(.data li:nth-child(4):hover) .notice_word li:nth-child(4) a,
+.notice_in:has(.data li:nth-child(4):hover) .data li:nth-child(4) a {
+    text-decoration: underline;
+}
+
+
 .notice_in li {
     font-size: 20px;
-    line-height: 37px;
+    line-height: 47px;
+}
+
+.notice_in .data a {
+    text-decoration: none;
+    color: #fff;
 }
 
 #middle_view_2 {
@@ -384,13 +506,20 @@ main #open_view {
     height: 24px;
 }
 
+.sns_title p img {
+    transition: transform 0.4s ease;
+}
+
+.sns_title p img:hover {
+    transform: rotate(180deg);
+}
+
 .sns {
     display: flex;
     border-radius: 0 20px 20px 0;
 }
 
 .sns_object {
-
     float: left;
 }
 
@@ -435,9 +564,23 @@ main #open_view {
     gap: 20px;
 }
 
+.sns_list li {
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.sns_list li img {
+    transition: 0.4s ease;
+}
+
+.sns_list li:hover img {
+    transform: scale(1.15);
+}
+
 .sns_list img {
     border-radius: 20px;
 }
+
 
 .sns_list video {
     width: 590px;
@@ -455,6 +598,7 @@ main #open_view {
 
 .sns.is-insta {
     background: linear-gradient(160deg, #f7e7db, #883BE0);
+    border-radius: 12px
 }
 
 .sns.is-face_book .sns_btn[data-target="face_book"] {
@@ -479,6 +623,7 @@ main #open_view {
 
 .sns.is-blog {
     background: #2db400;
+    border-radius: 12px;
 }
 
 .picture,
@@ -523,7 +668,6 @@ main #open_view {
     width: 100%;
     display: block;
     transition: transform 0.4s ease-in-out;
-    /* 확대/축소 속도와 부드러움 조절 */
 }
 
 .social_list ul li:hover img {
@@ -571,8 +715,16 @@ footer .inner {
 }
 
 .f_site span {
+    margin-right: -10px;
+    margin-left: 10px;
     display: inline-block;
     vertical-align: -2px;
+    transition: 0.4s ease;
+    cursor: pointer;
+}
+
+.f_site span:hover {
+    transform: rotate(180deg);
 }
 
 .f_law {
@@ -594,6 +746,11 @@ footer .inner {
     font-weight: bolder;
     display: flex;
     gap: 40px;
+}
+
+.law_inner a {
+    color: #000;
+    text-decoration: none;
 }
 
 .law_inner address {
