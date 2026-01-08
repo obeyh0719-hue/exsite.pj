@@ -126,6 +126,7 @@ header .inner {
     cursor: pointer;
     font-weight: bold;
     font-size: 10px;
+    opacity: 0.8;
 }
 
 .map_controls button img {
@@ -189,7 +190,7 @@ main #open_view {
 
 .quick_menu ul {
     display: flex;
-    justify-content: center;
+    
     flex-wrap: wrap;
 }
 
